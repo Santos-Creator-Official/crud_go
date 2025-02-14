@@ -13,8 +13,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Debug PATH
-        run: echo $PATH
+      - name: Set PATH for Go
+        run: echo "PATH=$PATH:/usr/local/go/bin" >> $GITHUB_ENV
 
       - name: Build Go application
         run: |

@@ -16,6 +16,6 @@ func InitRoutes(r *gin.Engine) {
 	api.DELETE("/users/:id", controllers.DeleteUsers)
 
 	api.GET("/test", func(context *gin.Context) {
-		fmt.Println("sukses nich 222")
+		fmt.Println("sukses nich 2223313123123")
 	})
 }
