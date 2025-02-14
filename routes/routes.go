@@ -16,6 +16,6 @@ func InitRoutes(r *gin.Engine) {
 	api.DELETE("/users/:id", controllers.DeleteUsers)
 
 	api.GET("/test", func(context *gin.Context) {
-		context.JSON(http.StatusOK, gin.H{"message": "Halo kamu berhasil"})
+		context.JSON(http.StatusOK, gin.H{"message": "Halo kamu berhasil lagi"})
 	})
 }

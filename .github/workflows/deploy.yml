@@ -23,6 +23,7 @@ jobs:
           git reset --hard origin/master
           go mod tidy
           go build -o crud_go
+          echo "Build Success"
 
       - name: Enable linger for user session
         run: loginctl enable-linger $(whoami)
@@ -34,7 +35,13 @@ jobs:
           if systemctl --user is-active --quiet crud_go; then
             echo "Service is running, restarting..."
             systemctl --user restart crud_go
+          echo "Service restarted successfully"
           else
             echo "Service is not running, starting..."
             systemctl --user start crud_go
+            echo "Service started successfully"
           fi
+
+      - name: Service Status
+        run: |
+          systemctl --user status crud_go --no-pager
