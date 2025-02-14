@@ -15,6 +15,7 @@ jobs:
 
       - name: Build Go application
         run: |
+          whoami
           cd /var/www/crud_go
           go mod tidy
           go build -o crud_go
