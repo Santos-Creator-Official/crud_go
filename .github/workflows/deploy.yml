@@ -27,8 +27,8 @@ jobs:
         run: |
           if systemctl is-active --quiet myapp; then
             echo "Service is running, restarting..."
-            sudo systemctl restart myapp
+            systemctl restart crud_go
           else
             echo "Service is not running, starting..."
-            sudo systemctl start myapp
+            systemctl start crud_go
           fi
