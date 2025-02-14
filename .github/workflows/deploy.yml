@@ -15,8 +15,9 @@ jobs:
 
       - name: Build Go application
         run: |
+          cd /var/www/crud_go
           go mod tidy
-          go build -o /var/www/crud_go/crud_go
+          go build -o crud_go
 
       - name: Check & Restart Service
         run: |
