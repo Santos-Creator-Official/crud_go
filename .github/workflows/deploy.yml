@@ -1,0 +1,32 @@
+name: Golang CI/CD
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Build Go application
+        run: |
+          go mod tidy
+          go build -o /var/www/crud_go/crud_go
+
+      - name: Check & Restart Service
+        run: |
+          if systemctl is-active --quiet myapp; then
+            echo "Service is running, restarting..."
+            sudo systemctl restart myapp
+          else
+            echo "Service is not running, starting..."
+            sudo systemctl start myapp
+          fi
+
+      - name: Check Service Status
+        run: sudo systemctl status myapp --no-pager
