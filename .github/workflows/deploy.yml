@@ -19,6 +19,8 @@ jobs:
       - name: Build Go application
         run: |
           cd /var/www/crud_go
+          git fetch --all
+          git reset --hard origin/master
           go mod tidy
           go build -o crud_go
 
