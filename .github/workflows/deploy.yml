@@ -32,6 +32,3 @@ jobs:
             echo "Service is not running, starting..."
             sudo systemctl start myapp
           fi
-
-      - name: Check Service Status
-        run: sudo systemctl status myapp --no-pager
