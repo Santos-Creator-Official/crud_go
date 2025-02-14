@@ -41,7 +41,4 @@ jobs:
             systemctl --user start crud_go
             echo "Service started successfully"
           fi
-
-      - name: Service Status
-        run: |
           systemctl --user status crud_go --no-pager
