@@ -18,13 +18,17 @@ jobs:
 
       - name: Build Go application
         run: |
-          whoami
           cd /var/www/crud_go
           go mod tidy
           go build -o crud_go
 
+      - name: Enable linger for user session
+        run: loginctl enable-linger $(whoami)
+
       - name: Check & Restart Service
         run: |
+          export XDG_RUNTIME_DIR=/run/user/$(id -u)
+          systemctl --user daemon-reload
           if systemctl --user is-active --quiet crud_go; then
             echo "Service is running, restarting..."
             systemctl --user restart crud_go
