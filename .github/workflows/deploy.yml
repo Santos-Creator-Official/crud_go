@@ -25,10 +25,10 @@ jobs:
 
       - name: Check & Restart Service
         run: |
-          if systemctl is-active --quiet myapp; then
+          if systemctl --user is-active --quiet crud_go; then
             echo "Service is running, restarting..."
-            systemctl restart crud_go
+            systemctl --user restart crud_go
           else
             echo "Service is not running, starting..."
-            systemctl start crud_go
+            systemctl --user start crud_go
           fi
