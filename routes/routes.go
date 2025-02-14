@@ -2,8 +2,8 @@ package routes
 
 import (
 	"crud_go/controllers"
-	"fmt"
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func InitRoutes(r *gin.Engine) {
@@ -16,6 +16,6 @@ func InitRoutes(r *gin.Engine) {
 	api.DELETE("/users/:id", controllers.DeleteUsers)
 
 	api.GET("/test", func(context *gin.Context) {
-		fmt.Println("sukses nich 2223313123123")
+		context.JSON(http.StatusOK, gin.H{"message": "Halo kamu berhasil"})
 	})
 }
